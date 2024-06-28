@@ -1,0 +1,115 @@
+<h1>Unit Converter</h1>
+
+<nav class="navbar">
+  <ul class="navbar-menu" id="navbar-menu">
+    <li class="navbar-item">
+      <a href="#length"
+        ><button (click)="showContent('length')" id="b1">Length</button></a
+      >
+    </li>
+    <li class="navbar-item">
+      <a href="#mass"
+        ><button (click)="showContent('mass')" id="b1">Mass</button></a
+      >
+    </li>
+    <li class="navbar-item">
+      <a href="#time"
+        ><button (click)="showContent('time')" id="b1">Time</button></a
+      >
+    </li>
+  </ul>
+</nav>
+
+<div>
+  @if(activeContent === 'length'){
+  <div>
+    <br />
+    <label for="value">Enter Value:</label>
+    <input
+      type="text"
+      id="value"
+      name="value"
+      [(ngModel)]="sourceValue"
+    /><br /><br />
+
+    <label for="s-unit">Enter Source Unit:</label>
+    <select name="source" id="source" [(ngModel)]="fromUnit">
+      <option disabled selected>Select a value</option>
+      <option value="feet">Feet</option>
+      <option value="inch">inch</option>
+      <option value="meter">Meter</option>
+      <option value="kilometer">Kilometer</option></select
+    ><br /><br />
+
+    <label for="t-unit">Enter Target Unit:</label>
+    <select name="target" id="target" [(ngModel)]="toUnit">
+      <option disabled selected>Select a value</option>
+      <option value="feet">Feet</option>
+      <option value="inch">inch</option>
+      <option value="meter">Meter</option>
+      <option value="kilometer">Kilometer</option></select
+    ><br /><br />
+    <button type="submit" (click)="convert('Length')">Submit</button>
+  </div>
+  } @if(activeContent === 'mass'){
+  <div>
+    <br />
+    <label for="value">Enter Value:</label>
+    <input
+      type="text"
+      id="value"
+      name="value"
+      [(ngModel)]="sourceValue"
+    /><br /><br />
+
+    <label for="s-unit">Enter Source Unit:</label>
+    <select name="source" id="source" [(ngModel)]="fromUnit">
+      <option disabled selected>Select a value</option>
+      <option value="pound">Pound</option>
+      <option value="ounce">Ounce</option>
+      <option value="gram">Grams</option>
+      <option value="kilogram">Kg</option></select
+    ><br /><br />
+
+    <label for="t-unit">Enter Target Unit:</label>
+    <select name="target" id="target" [(ngModel)]="toUnit">
+      <option disabled selected>Select a value</option>
+      <option value="pound">Pound</option>
+      <option value="ounce">Ounce</option>
+      <option value="gram">Grams</option>
+      <option value="kilogram">Kg</option></select
+    ><br /><br />
+    <button type="submit" (click)="convert('Mass')">Submit</button>
+  </div>
+  } @if(activeContent === 'time'){
+  <div>
+    <br />
+    <label for="value">Enter Value:</label>
+    <input
+      type="text"
+      id="value"
+      name="value"
+      [(ngModel)]="sourceValue"
+    /><br /><br />
+
+    <label for="s-unit">Enter Source Unit:</label>
+    <select name="source" id="source" [(ngModel)]="fromUnit">
+      <option disabled selected>Select a value</option>
+      <option value="second">Second</option>
+      <option value="milisecond">MiliSecond</option></select
+    ><br /><br />
+
+    <label for="t-unit">Enter Target Unit:</label>
+    <select name="target" id="target" [(ngModel)]="toUnit">
+      <option disabled selected>Select a value</option>
+      <option value="second">Second</option>
+      <option value="milisecond">MiliSecond</option></select
+    ><br /><br />
+    <button type="submit" (click)="convert('Time')">Submit</button>
+  </div>
+  }
+</div>
+  <div *ngIf="convertedValue !== undefined">
+    <h2>Converted Value: {{ convertedValue }}</h2>
+  </div>
+
